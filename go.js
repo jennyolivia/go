@@ -1,5 +1,5 @@
 
-let IO = {
+let GO = {
   
   // event listeners
   listeners: {},
@@ -15,7 +15,7 @@ let IO = {
       // a, b, x, y, left-shoulder, right-shoulder, left-trigger, right-trigger, select, start, left-joystick, right-joystick, dpad-up, dpad-down, dpad-left, dpad-right, home, share
       press: (key, callback) => {
         
-        IO.listeners[key] = {
+        GO.listeners[key] = {
           callback: callback,
           lastValue: 0
         };
@@ -25,7 +25,7 @@ let IO = {
       // left-joystick, right-joystick
       move: (key, callback) => {
         
-        IO.listeners[key + '-move'] = {
+        GO.listeners[key + '-move'] = {
           callback: callback,
           lastValue: {
             x: 0,
@@ -38,7 +38,7 @@ let IO = {
       
       connect: (callback) => {
         
-        IO.listeners['controller-connect'] = {
+        GO.listeners['controller-connect'] = {
           callback: callback
         };
                 
@@ -46,7 +46,7 @@ let IO = {
       
       disconnect: (callback) => {
         
-        IO.listeners['controller-disconnect'] = {
+        GO.listeners['controller-disconnect'] = {
           callback: callback
         };
                 
@@ -59,7 +59,7 @@ let IO = {
     // left-joystick-move
     removeListener: (name) => {
       
-      delete IO.listeners[name];
+      delete GO.listeners[name];
       
     },
     
@@ -73,7 +73,7 @@ let IO = {
       if (intensity.preset) {
         
         // load preset
-        const presets = IO.controllers.vibrationPresets;
+        const presets = GO.controllers.vibrationPresets;
         const preset = presets[intensity.preset];
         
         intensity = preset;
@@ -90,7 +90,7 @@ let IO = {
       
       // vibrate all controllers
       
-      const controllers = Object.values(IO.controller);
+      const controllers = Object.values(GO.controller);
       
       controllers.forEach(controller => {
               
@@ -135,13 +135,13 @@ let IO = {
   
   update: () => {
     
-    IO.updateControllers();
+    GO.updateControllers();
     
     
-    const buttonMap = IO.buttonMap;
-    const axisMap = IO.axisMap;
+    const buttonMap = GO.buttonMap;
+    const axisMap = GO.axisMap;
     
-    const controllers = Object.values(IO.controller);
+    const controllers = Object.values(GO.controller);
     
     controllers.forEach(controller => {
       
@@ -151,7 +151,7 @@ let IO = {
         
         const buttonName = buttonMap[index];
         
-        const buttonListener = IO.listeners[buttonName];
+        const buttonListener = GO.listeners[buttonName];
         
         // if button listener exists
         if (buttonListener) {
@@ -188,7 +188,7 @@ let IO = {
       // run on all axes
       Object.keys(axes).forEach(axisName => {
         
-        const axisListener = IO.listeners[axisName];
+        const axisListener = GO.listeners[axisName];
         
         // if axis listener exists
         if (axisListener) {
@@ -217,11 +217,11 @@ let IO = {
     
     
     // if controllers are connected
-    if (Object.keys(IO.controller).length
+    if (Object.keys(GO.controller).length
          !== 0) {
       
       // update
-      IO.onNextFrame(IO.update);
+      GO.onNextFrame(GO.update);
       
     }
     
@@ -235,7 +235,7 @@ let IO = {
       
       if (controller && controller.index !== undefined) {
         
-        IO.controller[controller.index] = controller;
+        GO.controller[controller.index] = controller;
         
       }
       
@@ -247,12 +247,12 @@ let IO = {
     
     window.addEventListener('gamepadconnected', (e) => {
       
-      IO.controller[e.gamepad.index] = e.gamepad;
+      GO.controller[e.gamepad.index] = e.gamepad;
       
-      IO.onNextFrame(IO.update);
+      GO.onNextFrame(GO.update);
       
       
-      const controllerListener = IO.listeners['controller-connect'];
+      const controllerListener = GO.listeners['controller-connect'];
       
       // if controller listener exists
       if (controllerListener) {
@@ -266,10 +266,10 @@ let IO = {
     
     window.addEventListener('gamepaddisconnected', (e) => {
       
-      delete IO.controller[e.gamepad.index];
+      delete GO.controller[e.gamepad.index];
       
       
-      const controllerListener = IO.listeners['controller-disconnect'];
+      const controllerListener = GO.listeners['controller-disconnect'];
       
       // if controller listener exists
       if (controllerListener) {
@@ -317,5 +317,5 @@ let IO = {
   
 };
 
-IO.addListeners();
+GO.addListeners();
 
