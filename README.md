@@ -1,29 +1,29 @@
-# <img src="icon.svg" width="30px"> Joycon.js
+# IO.js
 
 Add controller functionality to your JavaScript game.
 
-[![License](https://img.shields.io/github/license/benhatsor/joycon.js)](/LICENSE) [![Minified size](https://img.shields.io/github/size/benhatsor/joycon.js/Joycon.min.js)](/Joycon.min.js)
+[![License](https://img.shields.io/github/license/jennyolivia/io)](/LICENSE) [![Minified size](https://img.shields.io/github/size/jennyolivia/io/io.min.js)](/io.min.js)
 
 - Supports PlayStation & Xbox
 - [Really simple API](#api)
-- [~2.5KB minified](/Joycon.min.js)
+- [~2.5KB minified](/io.min.js)
 - Vibration support
 
 # Get it
 
 Add this line to the `<body>`:
 ```HTML
-<script src="https://joycon.js.org/Joycon.min.js"></script>
+<script src="https://io.js.org/io.min.js"></script>
 ```
 
-Here's a [demo.](https://cde.run/benhatsor/joycon.js/demo.html)
+Here's a [demo.](https://cde.run/jennyolivia/io/demo.html)
 
 # API
 
 ## Buttons
 
 ```JS
-const controllers = Joycon.controllers;
+const controllers = IO.controllers;
 
 controllers.on.press('start', (value) => {
 
@@ -37,7 +37,7 @@ Button can be `a`, `b`, `x`, `y`, `start`, `left-trigger`, etc. ([full list belo
 ## Joystick
 
 ```JS
-const controllers = Joycon.controllers;
+const controllers = IO.controllers;
 
 controllers.on.move('left-joystick', (value) => {
 
@@ -50,7 +50,7 @@ Also `right-joystick`.
 ## Controller connect
 
 ```JS
-const controllers = Joycon.controllers;
+const controllers = IO.controllers;
 
 controllers.on.connect((controller) => {
 
@@ -68,7 +68,7 @@ controllers.on.disconnect((controller) => {
 ## Vibrate
 
 ```JS
-const controllers = Joycon.controllers;
+const controllers = IO.controllers;
 
 // preset can be mild, medium or strong
 controllers.vibrate({ preset: 'medium' }, 250); // -> time in ms
@@ -83,7 +83,7 @@ controllers.vibrate({
 ## Remove listener
 
 ```JS
-const controllers = Joycon.controllers;
+const controllers = IO.controllers;
 
 controllers.removeListener('left-trigger');
 ```
