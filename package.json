@@ -1,9 +1,9 @@
 {
-  "name": "Joycon.js",
+  "name": "mctrl",
   "version": "1.0.0",
   "description": "Add controller functionality to your JavaScript game.",
-  "main": "Joycon.min.js",
-  "homepage": "https://joycon.js.org",
-  "author": "benhatsor",
+  "main": "mctrl.min.js",
+  "homepage": "https://mctrl.js.org",
+  "author": "jenny",
   "license": "MIT"
 }
