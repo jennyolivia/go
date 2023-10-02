@@ -13,8 +13,7 @@ Add controller functionality to your JavaScript game.
 
 Add this line to the `<body>`:
 ```HTML
-<script src="https://g
-o.js.org/go.min.js"></script>
+<script src="https://mctrl.js.org/mctrl.min.js"></script>
 ```
 
 Here's a [demo.](https://cde.run/jennyolivia/mctrl/demo.html)
