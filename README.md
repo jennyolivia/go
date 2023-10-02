@@ -1,12 +1,12 @@
-# GO.js
+# mctrl.js
 
 Add controller functionality to your JavaScript game.
 
-[![License](https://img.shields.io/github/license/jennyolivia/go)](/LICENSE) [![Minified size](https://img.shields.io/github/size/jennyolivia/go/go.min.js)](/go.min.js)
+[![License](https://img.shields.io/github/license/jennyolivia/mctrl)](/LICENSE) [![Minified size](https://img.shields.io/github/size/jennyolivia/mctrl/mctrl.min.js)](/mctrl.min.js)
 
 - Supports PlayStation & Xbox
 - [Really simple API](#api)
-- [~2.5KB minified](/go.min.js)
+- [~2.5KB minified](/mctrl.min.js)
 - Vibration support
 
 # Get it
@@ -17,14 +17,14 @@ Add this line to the `<body>`:
 o.js.org/go.min.js"></script>
 ```
 
-Here's a [demo.](https://cde.run/jennyolivia/go/demo.html)
+Here's a [demo.](https://cde.run/jennyolivia/mctrl/demo.html)
 
 # API
 
 ## Buttons
 
 ```JS
-const controllers = GO.controllers;
+const controllers = mctrl.controllers;
 
 controllers.on.press('start', (value) => {
 
@@ -38,7 +38,7 @@ Button can be `a`, `b`, `x`, `y`, `start`, `left-trigger`, etc. ([full list belo
 ## Joystick
 
 ```JS
-const controllers = GO.controllers;
+const controllers = mctrl.controllers;
 
 controllers.on.move('left-joystick', (value) => {
 
@@ -51,7 +51,7 @@ Also `right-joystick`.
 ## Controller connect
 
 ```JS
-const controllers = GO.controllers;
+const controllers = mctrl.controllers;
 
 controllers.on.connect((controller) => {
 
@@ -69,7 +69,7 @@ controllers.on.disconnect((controller) => {
 ## Vibrate
 
 ```JS
-const controllers = GO.controllers;
+const controllers = mctrl.controllers;
 
 // preset can be mild, medium or strong
 controllers.vibrate({ preset: 'medium' }, 250); // -> time in ms
@@ -84,7 +84,7 @@ controllers.vibrate({
 ## Remove listener
 
 ```JS
-const controllers = GO.controllers;
+const controllers = mctrl.controllers;
 
 controllers.removeListener('left-trigger');
 ```
