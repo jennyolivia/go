@@ -1,5 +1,5 @@
 
-let Joycon = {
+let IO = {
   
   // event listeners
   listeners: {},
@@ -15,7 +15,7 @@ let Joycon = {
       // a, b, x, y, left-shoulder, right-shoulder, left-trigger, right-trigger, select, start, left-joystick, right-joystick, dpad-up, dpad-down, dpad-left, dpad-right, home, share
       press: (key, callback) => {
         
-        Joycon.listeners[key] = {
+        IO.listeners[key] = {
           callback: callback,
           lastValue: 0
         };
@@ -25,7 +25,7 @@ let Joycon = {
       // left-joystick, right-joystick
       move: (key, callback) => {
         
-        Joycon.listeners[key + '-move'] = {
+        IO.listeners[key + '-move'] = {
           callback: callback,
           lastValue: {
             x: 0,
@@ -38,7 +38,7 @@ let Joycon = {
       
       connect: (callback) => {
         
-        Joycon.listeners['controller-connect'] = {
+        IO.listeners['controller-connect'] = {
           callback: callback
         };
                 
@@ -46,7 +46,7 @@ let Joycon = {
       
       disconnect: (callback) => {
         
-        Joycon.listeners['controller-disconnect'] = {
+        IO.listeners['controller-disconnect'] = {
           callback: callback
         };
                 
@@ -59,7 +59,7 @@ let Joycon = {
     // left-joystick-move
     removeListener: (name) => {
       
-      delete Joycon.listeners[name];
+      delete IO.listeners[name];
       
     },
     
@@ -73,7 +73,7 @@ let Joycon = {
       if (intensity.preset) {
         
         // load preset
-        const presets = Joycon.controllers.vibrationPresets;
+        const presets = IO.controllers.vibrationPresets;
         const preset = presets[intensity.preset];
         
         intensity = preset;
@@ -90,7 +90,7 @@ let Joycon = {
       
       // vibrate all controllers
       
-      const controllers = Object.values(Joycon.controller);
+      const controllers = Object.values(IO.controller);
       
       controllers.forEach(controller => {
               
@@ -135,13 +135,13 @@ let Joycon = {
   
   update: () => {
     
-    Joycon.updateControllers();
+    IO.updateControllers();
     
     
-    const buttonMap = Joycon.buttonMap;
-    const axisMap = Joycon.axisMap;
+    const buttonMap = IO.buttonMap;
+    const axisMap = IO.axisMap;
     
-    const controllers = Object.values(Joycon.controller);
+    const controllers = Object.values(IO.controller);
     
     controllers.forEach(controller => {
       
@@ -151,7 +151,7 @@ let Joycon = {
         
         const buttonName = buttonMap[index];
         
-        const buttonListener = Joycon.listeners[buttonName];
+        const buttonListener = IO.listeners[buttonName];
         
         // if button listener exists
         if (buttonListener) {
@@ -188,7 +188,7 @@ let Joycon = {
       // run on all axes
       Object.keys(axes).forEach(axisName => {
         
-        const axisListener = Joycon.listeners[axisName];
+        const axisListener = IO.listeners[axisName];
         
         // if axis listener exists
         if (axisListener) {
@@ -217,11 +217,11 @@ let Joycon = {
     
     
     // if controllers are connected
-    if (Object.keys(Joycon.controller).length
+    if (Object.keys(IO.controller).length
          !== 0) {
       
       // update
-      Joycon.onNextFrame(Joycon.update);
+      IO.onNextFrame(IO.update);
       
     }
     
@@ -235,7 +235,7 @@ let Joycon = {
       
       if (controller && controller.index !== undefined) {
         
-        Joycon.controller[controller.index] = controller;
+        IO.controller[controller.index] = controller;
         
       }
       
@@ -247,12 +247,12 @@ let Joycon = {
     
     window.addEventListener('gamepadconnected', (e) => {
       
-      Joycon.controller[e.gamepad.index] = e.gamepad;
+      IO.controller[e.gamepad.index] = e.gamepad;
       
-      Joycon.onNextFrame(Joycon.update);
+      IO.onNextFrame(IO.update);
       
       
-      const controllerListener = Joycon.listeners['controller-connect'];
+      const controllerListener = IO.listeners['controller-connect'];
       
       // if controller listener exists
       if (controllerListener) {
@@ -266,10 +266,10 @@ let Joycon = {
     
     window.addEventListener('gamepaddisconnected', (e) => {
       
-      delete Joycon.controller[e.gamepad.index];
+      delete IO.controller[e.gamepad.index];
       
       
-      const controllerListener = Joycon.listeners['controller-disconnect'];
+      const controllerListener = IO.listeners['controller-disconnect'];
       
       // if controller listener exists
       if (controllerListener) {
@@ -317,5 +317,5 @@ let Joycon = {
   
 };
 
-Joycon.addListeners();
+IO.addListeners();
 
