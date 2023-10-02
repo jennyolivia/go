@@ -2,18 +2,18 @@
 <html lang="en-US">
 <head>
 
-<title>IO.js</title>
+<title>GO.js</title>
 <meta charset="UTF-8">
-<meta property="og:title" content="IO.js">
+<meta property="og:title" content="GO.js">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="Multi Controller Js Library">
 <meta property="og:description" content="Multi Controller Js Library">
-<link rel="canonical" href="https://io.js.org/">
-<meta property="og:url" content="https://io.js.org/">
-<meta property="og:site_name" content="IO">
+<link rel="canonical" href="https://go.js.org/">
+<meta property="og:url" content="https://go.js.org/">
+<meta property="og:site_name" content="GO">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="IO.js">
+<meta property="twitter:title" content="GO.js">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Inter:400,700&amp;display=swap" as="style" type="text/css" crossorigin="">
@@ -25,35 +25,35 @@
   </head>
   <body ontouchstart="">
     <header class="page-header" role="banner">
-      <h1 class="project-name">IO.js</h1>
+      <h1 class="project-name">GO.js</h1>
       <h2 class="project-tagline">Multi Controller Js Library</h2>
       
-        <a href="https://github.com/jennyolivia/io" class="btn">View on GitHub</a>
+        <a href="https://github.com/jennyolivia/go" class="btn">View on GitHub</a>
       
       
     </header>
 
     <main id="content" class="main-content" role="main">
-      <h1 id="-joyconjs">IO.js</h1>
+      <h1 id="-joyconjs">GO.js</h1>
 
 <ul>
   <li>Supports PlayStation & Xbox</li>
   <li><a href="#api">Really simple API</a></li>
-  <li><a href="/io.min.js">~2.5KB minified</a></li>
+  <li><a href="/go.min.js">~2.5KB minified</a></li>
   <li>Vibration support</li>
 </ul>
 
 <h1 id="get-it">Get it</h1>
 
 <p>Add this line to the <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code>:</p>
-<pre><code class="language-HTML">&lt;script src="https://io.js.org/io.min.js"&gt;&lt;/script&gt;
+<pre><code class="language-HTML">&lt;script src="https://go.js.org/go.min.js"&gt;&lt;/script&gt;
 </code></pre>
 
 <h1 id="api">API</h1>
 
 <h2 id="buttons">Buttons</h2>
 
-<pre><code class="language-JS">const controllers = IO.controllers;
+<pre><code class="language-JS">const controllers = GO.controllers;
 
 controllers.on.press('start', (value) =&gt; {
 
@@ -66,7 +66,7 @@ controllers.on.press('start', (value) =&gt; {
 
 <h2 id="joystick">Joystick</h2>
 
-<pre><code class="language-JS">const controllers = IO.controllers;
+<pre><code class="language-JS">const controllers = GO.controllers;
 
 controllers.on.move('left-joystick', (value) =&gt; {
 
@@ -78,7 +78,7 @@ controllers.on.move('left-joystick', (value) =&gt; {
 
 <h2 id="controller-connected">Controller connect</h2>
 
-<pre><code class="language-JS">const controllers = IO.controllers;
+<pre><code class="language-JS">const controllers = GO.controllers;
 
 controllers.on.connect((controller) =&gt; {
 
@@ -95,7 +95,7 @@ controllers.on.disconnect((controller) =&gt; {
 
 <h2 id="vibrate">Vibrate</h2>
 
-<pre><code class="language-JS">const controllers = IO.controllers;
+<pre><code class="language-JS">const controllers = GO.controllers;
 
 // preset can be mild, medium or strong
 controllers.vibrate({ preset: 'medium' }, 250); // -&gt; time in ms
@@ -109,7 +109,7 @@ controllers.vibrate({
 
 <h2 id="remove-a-listener">Remove listener</h2>
 
-<pre><code class="language-JS">const controllers = IO.controllers;
+<pre><code class="language-JS">const controllers = GO.controllers;
 
 controllers.removeListener('left-trigger');
 </code></pre>
